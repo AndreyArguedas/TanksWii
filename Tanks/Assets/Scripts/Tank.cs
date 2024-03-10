@@ -10,18 +10,17 @@ public class Tank : MonoBehaviour
     
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
     private List<Bullet> bullets = new List<Bullet>();
-    //public Bullet[] bullets = new Bullet[10]; // Array to store instantiated objects
     
     // Start is called before the first frame update
     void Start()
     {
-        Transform gunChild = transform.Find("Gun");
+        //Transform gunChild = transform.Find("Gun");
 
         for (int i = 0; i < amountBullets; i++)
         {
             // Adjust position according to your needs
-            Bullet obj = Instantiate(bulletPrefab, gunChild.transform.position, Quaternion.identity);
-            obj.transform.SetParent(transform);
+            Bullet obj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            //obj.transform.SetParent(transform);
             bullets.Add(obj);
         }
         
@@ -65,9 +64,9 @@ public class Tank : MonoBehaviour
             Vector3 bulletFuturePos = Input.mousePosition;
             // Set the distance of the camera from the object
             bulletFuturePos.z = Camera.main.transform.position.y;
-
+            Vector3 finalDestination = Camera.main.ScreenToWorldPoint(bulletFuturePos);
             Bullet tempBullet = bullets[0];
-            tempBullet.setDestination(Camera.main.ScreenToWorldPoint(bulletFuturePos));
+            tempBullet.setDestination(finalDestination);
             tempBullet.setActiveBullet(true);
             bullets.RemoveAt(0); 
             
