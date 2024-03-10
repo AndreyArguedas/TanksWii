@@ -6,11 +6,26 @@ public class Tank : MonoBehaviour
 {
     public float moveSpeed = 2f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
-
+    public int amountBullets = 10; // Amount of bullets
+    
+    public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
+    private List<Bullet> bullets = new List<Bullet>();
+    //public Bullet[] bullets = new Bullet[10]; // Array to store instantiated objects
+    
     // Start is called before the first frame update
     void Start()
     {
+        Transform gunChild = transform.Find("Gun");
+
+        for (int i = 0; i < amountBullets; i++)
+        {
+            // Adjust position according to your needs
+            Bullet obj = Instantiate(bulletPrefab, gunChild.transform.position, Quaternion.identity);
+            obj.transform.SetParent(transform);
+            bullets.Add(obj);
+        }
         
+
     }
 
     // Update is called once per frame
@@ -42,5 +57,20 @@ public class Tank : MonoBehaviour
 
         // Rotate the object smoothly towards the mouse position
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+
+        // Check if the left mouse button is clicked and there is bullets left
+        if (Input.GetMouseButtonDown(0) && bullets.Count > 0)
+        {
+            Vector3 bulletFuturePos = Input.mousePosition;
+            // Set the distance of the camera from the object
+            bulletFuturePos.z = Camera.main.transform.position.y;
+
+            Bullet tempBullet = bullets[0];
+            tempBullet.setDestination(Camera.main.ScreenToWorldPoint(bulletFuturePos));
+            tempBullet.setActiveBullet(true);
+            bullets.RemoveAt(0); 
+            
+        }
     }
 }

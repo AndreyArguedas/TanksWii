@@ -5,31 +5,35 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float moveSpeed = 7f; // Speed of the movement
-    private bool activateBullet = false;
-    private Vector3 worldMousePos;
+    private Vector3 destination;
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(false);
+    }
+
+    public void setActiveBullet(bool active){
+        gameObject.SetActive(active);
+    }
+
+    public void setDestination(Vector3 inputDestination){
+        destination = inputDestination;
+    }
+
+    public Vector3 getDestination(){
+        return destination;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Check if the right mouse button is clicked
-        if (Input.GetMouseButtonDown(0) && !activateBullet)
+        if (gameObject.activeSelf)
         {
-            Vector3 mousePos = Input.mousePosition;
-            // Set the distance of the camera from the object
-            mousePos.z = Camera.main.transform.position.y;
-            // Convert the mouse position from screen space to world space
-            worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            activateBullet = true;
+            transform.position = Vector3.MoveTowards(transform.position, getDestination(), moveSpeed * Time.deltaTime);
+            if(transform.position == getDestination()){
+                Destroy(gameObject);
+            }
         }
-
-        if(activateBullet){
-            transform.position = Vector3.MoveTowards(transform.position, worldMousePos, moveSpeed * Time.deltaTime);
-        }
-        
-
     }
 }
