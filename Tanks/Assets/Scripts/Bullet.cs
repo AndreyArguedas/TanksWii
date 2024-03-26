@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
     }
 
     public void setActiveBullet(bool active){
@@ -27,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {   
-        collide = true;
+        //collide = true;
         Debug.Log("Colision " + collision.gameObject.name);
         // Check if the collision involves a GameObject with the name "MainCharacter"
         /*if (collision.gameObject.name == "MainCharacter")

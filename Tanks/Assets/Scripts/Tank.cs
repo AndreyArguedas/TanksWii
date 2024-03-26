@@ -6,24 +6,12 @@ public class Tank : MonoBehaviour
 {
     public float moveSpeed = 2f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
-    public int amountBullets = 10; // Amount of bullets
     
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
-    private List<Bullet> bullets = new List<Bullet>();
     
     // Start is called before the first frame update
     void Start()
-    {
-        //Transform gunChild = transform.Find("Gun");
-
-        for (int i = 0; i < amountBullets; i++)
-        {
-            // Adjust position according to your needs
-            Bullet obj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            //obj.transform.SetParent(transform);
-            bullets.Add(obj);
-        }
-        
+    { 
 
     }
 
@@ -59,17 +47,19 @@ public class Tank : MonoBehaviour
 
 
         // Check if the left mouse button is clicked and there is bullets left
-        if (Input.GetMouseButtonDown(0) && bullets.Count > 0)
+        if (Input.GetMouseButtonDown(0))
         {
             Vector3 bulletFuturePos = Input.mousePosition;
             // Set the distance of the camera from the object
             bulletFuturePos.z = Camera.main.transform.position.y;
             Vector3 finalDestination = Camera.main.ScreenToWorldPoint(bulletFuturePos);
-            Bullet tempBullet = bullets[0];
-            tempBullet.setDestination(finalDestination);
-            tempBullet.setActiveBullet(true);
-            bullets.RemoveAt(0); 
-            
+            shootBullet(finalDestination);           
         }
+    }
+
+    void shootBullet(Vector3 finalDestination){
+        Bullet tempBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        tempBullet.setDestination(finalDestination);
+        tempBullet.setActiveBullet(true);
     }
 }
