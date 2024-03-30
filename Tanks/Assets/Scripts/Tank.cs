@@ -14,7 +14,6 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        
     }
 
     // Update is called once per frame
@@ -60,10 +59,8 @@ public class Tank : MonoBehaviour
     }
 
     void shootBullet(Vector3 finalDestination){
-        //Vector3 bulletPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
         Transform gunChild = transform.Find("Gun");
         Bullet tempBullet = Instantiate(bulletPrefab, gunChild.transform.position, gunChild.transform.rotation);
-        //tempBullet.transform.SetParent(transform);
         tempBullet.setDestination(finalDestination);
         tempBullet.setActiveBullet(true);
     }
