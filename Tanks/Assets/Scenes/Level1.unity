@@ -960,7 +960,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1500804772213311664, guid: 3789adecbcda30c479d02b99db90091f, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1500804772213311664, guid: 3789adecbcda30c479d02b99db90091f, type: 3}
       propertyPath: m_AngularDrag

@@ -38,7 +38,8 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
            ContactPoint contact = collision.contacts[0];
-           Vector3.Reflect(rb.velocity, contact.normal);
+           Vector3 direction = Vector3.Reflect(rb.velocity.normalized, contact.normal);
+           rb.velocity = direction.normalized * moveSpeed;
         }
    
     }

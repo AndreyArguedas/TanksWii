@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  tank: {fileID: 0}
 --- !u!54 &4244913084177016430
 Rigidbody:
   m_ObjectHideFlags: 0
