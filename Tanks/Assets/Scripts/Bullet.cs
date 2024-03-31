@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public float moveSpeed = 7f; // Speed of the movement
     private Vector3 destination;
     private Rigidbody rb;
+    //public int allowedCollisions = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,9 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
            ContactPoint contact = collision.contacts[0];
-           Vector3 direction = Vector3.Reflect(rb.velocity.normalized, contact.normal);
-           rb.velocity = direction.normalized * moveSpeed;
+           Vector3 direction = Vector3.Project(rb.velocity, contact.normal);
+           GetComponent<Rigidbody>().AddForce(direction * moveSpeed);
+           //rb.velocity = direction * moveSpeed;
         }
    
     }
