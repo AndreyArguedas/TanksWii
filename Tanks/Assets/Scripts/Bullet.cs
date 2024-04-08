@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
     public float moveSpeed = 7f; // Speed of the movement
     private Vector3 destination;
     private Rigidbody rb;
-    //public int allowedCollisions = 3;
+    public int allowedCollisions = 3;
+    private int currentCollisions = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,16 @@ public class Bullet : MonoBehaviour
            ContactPoint contact = collision.contacts[0];
            Vector3 direction = Vector3.Project(rb.velocity, contact.normal);
            GetComponent<Rigidbody>().AddForce(direction * moveSpeed);
+           currentCollisions++;
            //rb.velocity = direction * moveSpeed;
+           if(currentCollisions >= 3){
+            Destroy(gameObject);
+           }
+        }
+
+        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Tank")
+        {
+            Destroy(gameObject);
         }
    
     }
