@@ -7,19 +7,20 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 2f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
-    
+    public GameObject destination;
+    private NavMeshAgent agent;
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        agent.destination = destination.transform.position;
     }
 
     void shootBullet(Vector3 finalDestination){
