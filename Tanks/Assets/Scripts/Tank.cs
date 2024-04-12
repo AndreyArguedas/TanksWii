@@ -8,8 +8,6 @@ public class Tank : MonoBehaviour
     public float rotationSpeed = 5f; // Speed of the rotation
     
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
-    //private List<Bullet> bullets = new List<Bullet>();
-    //public int amountBullets = 10; // Amount of bullets
     
     // Start is called before the first frame update
     void Start()

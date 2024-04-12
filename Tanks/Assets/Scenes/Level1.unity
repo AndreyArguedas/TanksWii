@@ -717,8 +717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321193ea299c0354faae0d354bb2820b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
   rotationSpeed: 5
+  shootInterval: 3.5
   destination: {fileID: 364275624877857328}
   bulletPrefab: {fileID: 3169318675270472850, guid: 5bf3712a3a5628d4d8207542d42db526, type: 3}
 --- !u!1001 &1255396379

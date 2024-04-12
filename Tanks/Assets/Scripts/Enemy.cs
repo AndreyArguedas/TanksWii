@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 2f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
+    public float shootInterval = 3.5f;
     public GameObject destination;
     private NavMeshAgent agent;
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
@@ -15,12 +16,25 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(shoot(shootInterval));
     }
 
     // Update is called once per frame
     void Update()
-    {
-        agent.destination = destination.transform.position;
+    {   
+        if(destination != null){
+            agent.destination = destination.transform.position;
+        }
+    }
+
+    IEnumerator shoot(float duration)
+    {   
+        if(destination != null){
+            yield return new WaitForSeconds(duration);
+            shootBullet(destination.transform.position);
+            yield return StartCoroutine(shoot(duration)); // Recursive call
+        }
+        
     }
 
     void shootBullet(Vector3 finalDestination){
