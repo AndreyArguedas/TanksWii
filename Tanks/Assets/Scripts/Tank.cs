@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
-    public float moveSpeed = 2f; // Speed of the movement
+    public float moveSpeed = 4f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
     
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor

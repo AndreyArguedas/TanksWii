@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public float moveSpeed = 2f; // Speed of the movement
+    public float moveSpeed = 4f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
     public float shootInterval = 3.5f;
     public GameObject destination;

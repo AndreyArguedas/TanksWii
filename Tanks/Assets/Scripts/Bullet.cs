@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
            Vector3 direction = Vector3.Project(rb.velocity, contact.normal);
            GetComponent<Rigidbody>().AddForce(direction * moveSpeed);
            currentCollisions++;
-           if(currentCollisions >= 3){
+           if(currentCollisions >= allowedCollisions){
             Destroy(gameObject);
            }
         }
