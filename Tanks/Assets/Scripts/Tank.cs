@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Tank : BaseTank
 {
-    public float moveSpeed = 4f; // Speed of the movement
-    public float rotationSpeed = 5f; // Speed of the rotation
-    
-    public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
     
     // Start is called before the first frame update
     void Start()
@@ -45,24 +41,9 @@ public class Tank : MonoBehaviour
             // Set the distance of the camera from the object
             bulletFuturePos.z = Camera.main.transform.position.y;
             Vector3 finalDestination = Camera.main.ScreenToWorldPoint(bulletFuturePos);
-            shootBullet(finalDestination);           
+            base.shootBullet(finalDestination);           
         }
         
     }
 
-    void shootBullet(Vector3 finalDestination){
-        Transform gunChild = transform.Find("Gun");
-        Vector3 bulletPosition = new Vector3(gunChild.transform.position.x, transform.position.y,gunChild.transform.position.z);
-        Bullet tempBullet = Instantiate(bulletPrefab, bulletPosition, gunChild.transform.rotation);
-        tempBullet.setDestination(finalDestination);
-        tempBullet.setActiveBullet(true);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {   
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Destroy(gameObject);
-        }   
-    }
 }

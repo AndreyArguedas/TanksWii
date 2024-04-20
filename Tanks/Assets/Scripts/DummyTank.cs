@@ -1,38 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class Enemy : BaseTank
+public class DummyTank : BaseTank
 {
-    public float shootInterval = 3.5f;
-    
-    public GameObject destination;
-    private NavMeshAgent agent;
-
+    public float shootInterval = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         StartCoroutine(shoot(shootInterval));
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        if(destination != null){
-            agent.destination = destination.transform.position;
-        }
+    {
+        transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime);
     }
 
     IEnumerator shoot(float duration)
     {   
         yield return new WaitForSeconds(duration);
-        if(destination != null){
-            base.shootBullet(destination.transform.position);
+        Transform spawnPoint = transform.Find("SpawnPoint");
+        if(spawnPoint != null){
+            base.shootBullet(spawnPoint.position);
             yield return StartCoroutine(shoot(duration)); // Recursive call
         }
         
     }
-
 }

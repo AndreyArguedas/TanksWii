@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
            }
         }
 
-        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Tank")
+        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Tank" || collision.gameObject.name == "DummyTank")
         {
             Destroy(gameObject);
         }
