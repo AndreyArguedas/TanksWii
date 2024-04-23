@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
@@ -44,14 +45,23 @@ public class Bullet : MonoBehaviour
            GetComponent<Rigidbody>().AddForce(direction * moveSpeed);
            currentCollisions++;
            if(currentCollisions >= allowedCollisions){
-            Destroy(gameObject);
+                Destroy(gameObject);
            }
         }
 
-        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Tank" || collision.gameObject.name == "DummyTank")
+        if (collision.gameObject.name == "TankTag")
         {
             Destroy(gameObject);
         }
+
+        if(collision.gameObject.name == "PlayerTank"){
+            // Get the current scene index
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            // Reload the current scene
+            SceneManager.LoadScene(currentSceneIndex);
+        }
+            
    
     }
 

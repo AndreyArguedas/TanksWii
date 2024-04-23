@@ -774,7 +774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6246801214539046016, guid: 3789adecbcda30c479d02b99db90091f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.02
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6246801214539046016, guid: 3789adecbcda30c479d02b99db90091f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -946,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5724687121145228850, guid: 3789adecbcda30c479d02b99db90091f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: TankTag
       objectReference: {fileID: 0}
     - target: {fileID: 6104338085902004016, guid: 3789adecbcda30c479d02b99db90091f, type: 3}
       propertyPath: m_Size.x
