@@ -6,8 +6,10 @@ public class BaseTank : MonoBehaviour
 {
     public float moveSpeed = 4f; // Speed of the movement
     public float rotationSpeed = 5f; // Speed of the rotation
-    
+    public float sightRange = 5f;
+    public float shootInterval = 1.0f;
     public Bullet bulletPrefab; // Reference to the prefab in the Unity Editor
+    public GameObject destination;
     
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class BaseTank : MonoBehaviour
         
     }
 
-    protected void shootBullet(Vector3 finalDestination){
+    public virtual void shootBullet(Vector3 finalDestination){
         Transform gunChild = transform.Find("Gun");
         Vector3 bulletPosition = new Vector3(gunChild.transform.position.x, transform.position.y,gunChild.transform.position.z);
         Bullet tempBullet = Instantiate(bulletPrefab, bulletPosition, gunChild.transform.rotation);

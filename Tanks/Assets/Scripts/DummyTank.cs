@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class DummyTank : BaseTank
 {
-    public float shootInterval = 1.0f;
+    
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(shoot(shootInterval));
+        //StartCoroutine(shoot(shootInterval));
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime);
+        if (destination != null)
+        {
+            // Calculate the direction from this object to the target object
+            Vector3 directionToTarget = destination.transform.position - transform.position;
+
+            // Calculate the rotation needed to face the target object
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+            // Smoothly rotate towards the target rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
     }
 
-    IEnumerator shoot(float duration)
-    {   
-        yield return new WaitForSeconds(duration);
-        Transform spawnPoint = transform.Find("SpawnPoint");
-        if(spawnPoint != null){
-            base.shootBullet(spawnPoint.position);
-            yield return StartCoroutine(shoot(duration)); // Recursive call
-        }
-        
+    public override void shootBullet(Vector3 finalDestination){
+        base.shootBullet(finalDestination);
     }
 }

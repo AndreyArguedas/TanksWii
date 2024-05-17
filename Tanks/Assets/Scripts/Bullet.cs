@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(collision.gameObject.name == "PlayerTank"){
+        if(collision.gameObject.name == "PlayerTank" || collision.gameObject.name == "PlayerTank Variant"){
             // Get the current scene index
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
