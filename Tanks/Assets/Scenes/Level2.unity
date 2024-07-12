@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 877050518}
+    - target: {fileID: 164973458094736451, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
+      propertyPath: canSeePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1840411916406110759, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
       propertyPath: m_Name
       value: EnemyTank Variant (2)
@@ -859,6 +863,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 877050518}
+    - target: {fileID: -1628738446430864455, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
+      propertyPath: canSeePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4900004914117779367, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
       propertyPath: m_Name
       value: DummyTank Variant (1)
@@ -947,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 877050518}
     - target: {fileID: -1628738446430864455, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
       propertyPath: canSeePlayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1628738446430864455, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
       propertyPath: targetMask.m_Bits
@@ -971,7 +979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6756354378222923029, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.007974
+      value: -0.87
       objectReference: {fileID: 0}
     - target: {fileID: 6756354378222923029, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1196,6 +1204,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 877050518}
+    - target: {fileID: -1628738446430864455, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
+      propertyPath: canSeePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4900004914117779367, guid: 34f6ab592a6909041b4e5835989096cf, type: 3}
       propertyPath: m_Name
       value: DummyTank Variant (2)
@@ -1365,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5896050832669596317, guid: cc18945120906974fbc79eeb30637b9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.202
       objectReference: {fileID: 0}
     - target: {fileID: 5896050832669596317, guid: cc18945120906974fbc79eeb30637b9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1768,6 +1780,10 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 877050518}
+    - target: {fileID: 164973458094736451, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
+      propertyPath: canSeePlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1840411916406110759, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
       propertyPath: m_Name
       value: EnemyTank Variant (1)
@@ -1982,6 +1998,14 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 877050518}
+    - target: {fileID: 164973458094736451, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
+      propertyPath: canSeePlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 164973458094736451, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
+      propertyPath: obstructionMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 1840411916406110759, guid: ce23157538e70a84a840dbf1583b7c70, type: 3}
       propertyPath: m_Name
       value: EnemyTank Variant
